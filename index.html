@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atomic Card Components</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet" />
+
+  <!-- Handlebars -->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- HEADER -->
+<header class="bg-white shadow-md border-b-4 border-blue-700">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+        <h1 class="text-2xl font-semibold text-blue-700">Atomic Design — Card Components</h1>
+    </div>
+</header>
+
+
+
+  <!-- MAIN -->
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <div id="cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </main>
+
+
+  <!-- ================== HANDLEBARS CARD TEMPLATE ================== -->
+  <script id="card-template" type="text/x-handlebars-template">
+
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg 
+             transition duration-300 
+             hover:-translate-y-1 
+             hover:border-blue-400 
+             hover:shadow-xl hover:shadow-blue-400/50">
+
+      <!-- HEADER -->
+      <div class="flex items-center gap-4 p-4 border-b border-gray-100">
+
+        <!-- FIXED IMAGE SIZE -->
+        <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
+          <img src="{{image}}" class="w-full h-full object-cover" />
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-800">{{name}}</h2>
+          <p class="text-sm text-gray-500">{{role}}</p>
+        </div>
+      </div>
+
+      <!-- BODY -->
+      <div class="p-4 space-y-3">
+        <p class="text-gray-700 text-sm">{{description}}</p>
+
+        <div class="flex flex-wrap gap-2 my-3">
+          {{#each tags}}
+            <span class="px-2 py-2 text-xs rounded-md bg-gray-100 text-gray-700 border border-gray-200">{{this}}</span>
+          {{/each}}
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="px-4 pb-4">
+        <div class="flex items-center justify-between">
+
+          <p class="text-sm text-gray-600">
+            Experience: <strong>{{experience}}</strong>
+          </p>
+
+          <div class="flex gap-2">
+            <button class="btn btn-ghost btn-sm" data-action="view" data-id="{{id}}">View</button>
+            <button class="btn btn-primary btn-sm" data-action="message" data-id="{{id}}">Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </script>
+  <!-- ================== TEMPLATE END ================== -->
+
+  <!-- FOOTER -->
+<footer class="bg-blue-50 py-4 mt-12 border-t-4 border-blue-400">
+    <div class="max-w-6xl mx-auto text-center text-blue-700 text-sm">
+        © 2025 - Atomic Design Card Components | All Rights Reserved.
+    </div>
+</footer>
+
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
